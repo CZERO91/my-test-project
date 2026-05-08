@@ -268,7 +268,7 @@ const sampleJson: FormSchema = {
       options: {
         name: 'htmltext52041',
         label: 'html-text',
-        htmlContent: '<div class="p-4 bg-blue-50 rounded-lg border border-blue-200"><b class="text-blue-600">提示信息：</b> 请填写下方表单内容</div>',
+        htmlContent: '<div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100"><b class="text-blue-600">提示信息：</b> 请填写下方表单内容</div>',
         hidden: false,
         columnWidth: '200px',
       },
@@ -332,7 +332,6 @@ const ImportPage: React.FC = () => {
   const [isFormatValid, setIsFormatValid] = useState(false);
   
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
   
   useEffect(() => {
     loadSavedConfigs();
@@ -532,7 +531,7 @@ const ImportPage: React.FC = () => {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setShowSavedConfigs(!showSavedConfigs)}
-                className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-100/80 rounded-lg transition-all duration-200 flex items-center gap-2"
+                className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-100/80 rounded-xl transition-all duration-200 flex items-center gap-2"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
@@ -541,7 +540,7 @@ const ImportPage: React.FC = () => {
               </button>
               <Link
                 to="/renderer"
-                className="px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50/80 rounded-lg transition-all duration-200 flex items-center gap-2"
+                className="px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50/80 rounded-xl transition-all duration-200 flex items-center gap-2"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -556,7 +555,7 @@ const ImportPage: React.FC = () => {
       {showSavedConfigs && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm" onClick={() => setShowSavedConfigs(false)}>
           <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4 max-h-[80vh] overflow-hidden animate-scale-in" onClick={(e) => e.stopPropagation()}>
-            <div className="p-4 border-b border-slate-200 flex items-center justify-between bg-gradient-to-r from-slate-50 to-white">
+            <div className="p-4 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-slate-50 to-white">
               <h3 className="text-lg font-semibold text-slate-800 flex items-center gap-2">
                 <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
@@ -583,7 +582,7 @@ const ImportPage: React.FC = () => {
                   {savedConfigs.map((config) => (
                     <div
                       key={config.id}
-                      className="flex items-center justify-between p-3 bg-gradient-to-r from-slate-50 to-white border border-slate-200 rounded-xl hover:from-blue-50 hover:to-white hover:border-blue-200 transition-all duration-200 group"
+                      className="flex items-center justify-between p-3 bg-gradient-to-r from-slate-50 to-white border border-slate-100 rounded-xl hover:from-blue-50 hover:to-white hover:border-blue-100 transition-all duration-200 group"
                     >
                       <div className="flex-1 min-w-0">
                         <p className="font-medium text-slate-800 truncate group-hover:text-blue-600 transition-colors">{config.name}</p>
@@ -600,13 +599,13 @@ const ImportPage: React.FC = () => {
                             loadConfig(config.id);
                             setShowSavedConfigs(false);
                           }}
-                          className="px-3 py-1.5 text-sm text-blue-600 hover:bg-blue-50 rounded-lg transition-colors font-medium"
+                          className="px-3 py-1.5 text-sm text-blue-600 hover:bg-blue-50 rounded-xl transition-colors font-medium"
                         >
                           加载
                         </button>
                         <button
                           onClick={() => handleDeleteConfig(config.id)}
-                          className="px-3 py-1.5 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors font-medium"
+                          className="px-3 py-1.5 text-sm text-red-600 hover:bg-red-50 rounded-xl transition-colors font-medium"
                         >
                           删除
                         </button>
@@ -623,12 +622,12 @@ const ImportPage: React.FC = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="space-y-4">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-slate-200/50 overflow-hidden">
-              <div className="p-4 border-b border-slate-200/50 bg-gradient-to-r from-slate-50 to-white">
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
+              <div className="p-4 border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                       </svg>
                     </div>
@@ -642,16 +641,16 @@ const ImportPage: React.FC = () => {
                   <div className="flex items-center gap-2">
                     <button
                       onClick={handleFormatJson}
-                      className="px-3 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors flex items-center gap-1"
+                      className="px-3 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition-colors flex items-center gap-1"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                       </svg>
                       格式化
                     </button>
                     <button
                       onClick={handleLoadSample}
-                      className="px-3 py-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors flex items-center gap-1"
+                      className="px-3 py-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-xl transition-colors flex items-center gap-1"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -660,7 +659,7 @@ const ImportPage: React.FC = () => {
                     </button>
                     <button
                       onClick={handleClear}
-                      className="px-3 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors flex items-center gap-1"
+                      className="px-3 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition-colors flex items-center gap-1"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -678,7 +677,7 @@ const ImportPage: React.FC = () => {
                 onDrop={handleDrop}
               >
                 {isDragging && (
-                  <div className="absolute inset-0 bg-blue-500/10 border-2 border-dashed border-blue-500 rounded-lg flex items-center justify-center z-10 backdrop-blur-sm">
+                  <div className="absolute inset-0 bg-blue-500/10 border-2 border-dashed border-blue-500 rounded-2xl flex items-center justify-center z-10 backdrop-blur-sm">
                     <div className="text-center">
                       <svg className="w-12 h-12 text-blue-500 mx-auto mb-2 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
@@ -699,10 +698,10 @@ const ImportPage: React.FC = () => {
                     />
                     <button
                       onClick={() => fileInputRef.current?.click()}
-                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg hover:from-blue-600 hover:to-indigo-600 transition-all duration-200 text-sm font-medium shadow-sm hover:shadow-md"
+                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl hover:from-blue-600 hover:to-indigo-600 transition-all duration-200 text-sm font-medium shadow-md hover:shadow-lg"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                       </svg>
                       上传 JSON 文件
                     </button>
@@ -715,17 +714,16 @@ const ImportPage: React.FC = () => {
                   </div>
                   
                   <div className="relative">
-                    <div className="absolute top-2 right-2 z-10 flex gap-1">
-                      <span className="px-2 py-0.5 text-xs bg-slate-700 text-slate-300 rounded font-mono">
+                    <div className="absolute top-3 right-3 z-10 flex gap-1">
+                      <span className="px-2 py-0.5 text-xs bg-slate-700 text-slate-300 rounded-lg">
                         {jsonInput.split('\n').length} 行
                       </span>
                     </div>
                     <textarea
-                      ref={textareaRef}
                       value={jsonInput}
                       onChange={handleJsonChange}
                       placeholder="在此输入 JSON 配置..."
-                      className="w-full h-80 px-4 py-3 font-mono text-sm bg-gradient-to-br from-slate-900 to-slate-800 text-slate-100 rounded-xl border-2 border-transparent focus:border-blue-500 focus:ring-0 resize-none transition-all duration-200"
+                      className="w-full h-80 px-4 py-3 font-mono text-sm bg-gradient-to-br from-slate-900 to-slate-800 text-slate-100 rounded-xl border-0 focus:ring-2 focus:ring-blue-500/30 resize-none transition-all duration-200"
                       spellCheck={false}
                     />
                   </div>
@@ -734,7 +732,7 @@ const ImportPage: React.FC = () => {
               
               {parseError && (
                 <div className="px-4 pb-4">
-                  <div className="p-3 bg-red-50/80 backdrop-blur border border-red-200 rounded-xl text-red-700 text-sm">
+                  <div className="p-3 bg-red-50/80 backdrop-blur border border-red-100 rounded-xl text-red-700 text-sm">
                     <div className="flex items-center gap-2">
                       <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -745,14 +743,14 @@ const ImportPage: React.FC = () => {
                 </div>
               )}
               
-              <div className="p-4 border-t border-slate-200/50 bg-gradient-to-r from-slate-50 to-white">
+              <div className="p-4 border-t border-slate-100 bg-gradient-to-r from-slate-50 to-white">
                 <div className="flex items-center gap-3">
                   <button
                     onClick={handleRender}
-                    className={`flex-1 px-4 py-3 font-medium rounded-xl transition-all duration-200 shadow-sm hover:shadow-md flex items-center justify-center gap-2 ${
+                    className={`flex-1 px-4 py-3 font-medium rounded-xl transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2 ${
                       isFormatValid 
                         ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white hover:from-blue-600 hover:to-indigo-600' 
-                        : 'bg-slate-300 text-slate-500 cursor-not-allowed'
+                        : 'bg-slate-200 text-slate-500 cursor-not-allowed'
                     }`}
                     disabled={!isFormatValid}
                   >
@@ -769,12 +767,12 @@ const ImportPage: React.FC = () => {
                         value={saveName}
                         onChange={(e) => setSaveName(e.target.value)}
                         placeholder="配置名称"
-                        className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                        className="flex-1 px-3 py-2 text-sm border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                       />
                       <button
                         onClick={handleSaveConfig}
                         disabled={isSaving || !saveName.trim()}
-                        className="px-4 py-2 bg-gradient-to-r from-slate-700 to-slate-800 text-white font-medium rounded-lg hover:from-slate-800 hover:to-slate-900 transition-all duration-200 disabled:opacity-50 shadow-sm hover:shadow-md flex items-center gap-2"
+                        className="px-4 py-2 bg-gradient-to-r from-slate-700 to-slate-800 text-white font-medium rounded-xl hover:from-slate-800 hover:to-slate-900 transition-all duration-200 disabled:opacity-50 shadow-md hover:shadow-lg flex items-center gap-2"
                       >
                         {isSaving ? (
                           <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -796,11 +794,11 @@ const ImportPage: React.FC = () => {
           </div>
           
           <div className="space-y-4">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-slate-200/50 overflow-hidden">
-              <div className="p-4 border-b border-slate-200/50 bg-gradient-to-r from-slate-50 to-white">
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
+              <div className="p-4 border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                   </div>
@@ -828,24 +826,24 @@ const ImportPage: React.FC = () => {
                   </div>
                 ) : (
                   <div className="flex flex-col items-center justify-center py-12 text-slate-400">
-                    <div className="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center mb-4">
+                    <div className="w-20 h-20 bg-slate-50 rounded-2xl flex items-center justify-center mb-4">
                       <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
                     </div>
-                    <p className="text-center font-medium">输入或上传 JSON 配置</p>
-                    <p className="text-sm mt-1">以预览表单效果</p>
+                    <p className="text-center font-medium text-slate-600">输入或上传 JSON 配置</p>
+                    <p className="text-sm mt-1 text-slate-400">以预览表单效果</p>
                   </div>
                 )}
               </div>
             </div>
             
             {submitResult && (
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-green-200/50 overflow-hidden animate-fade-in">
-                <div className="p-4 border-b border-green-200/50 bg-gradient-to-r from-green-50 to-white">
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-green-100 overflow-hidden animate-fade-in">
+                <div className="p-4 border-b border-green-100 bg-gradient-to-r from-green-50 to-white">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                      <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
