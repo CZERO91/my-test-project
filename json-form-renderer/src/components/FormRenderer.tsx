@@ -78,10 +78,11 @@ const DateWidget: React.FC<{
         onChange={(e) => onChange(e.target.value)}
         disabled={options.disabled}
         readOnly={options.readonly}
-        className="relative w-full px-4 py-3 bg-white/95 border border-slate-150 rounded-2xl text-slate-700 text-sm
+        className="relative w-full px-4 py-3 pr-10 bg-white/95 border border-slate-150 rounded-2xl text-slate-700 text-sm
           focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 
           disabled:bg-slate-50 disabled:text-slate-400 disabled:cursor-not-allowed disabled:border-slate-100
-          hover:border-slate-200 hover:bg-white transition-all duration-200"
+          hover:border-slate-200 hover:bg-white transition-all duration-200
+          [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:right-3 [&::-webkit-calendar-picker-indicator]:cursor-pointer"
       />
       <div className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -160,7 +161,7 @@ const RadioWidget: React.FC<{
   const currentValue = value ?? options.defaultValue;
   
   return (
-    <div className={`flex ${displayStyle === 'inline' ? 'flex-row flex-wrap gap-8' : 'flex-col gap-4'}`}>
+    <div className={`flex ${displayStyle === 'inline' ? 'flex-row flex-wrap gap-6' : 'flex-col gap-3'}`}>
       {optionItems.map((item: any, index: number) => {
         const itemValue = item[options.valueKey || 'value'];
         const isChecked = currentValue === itemValue;
@@ -172,19 +173,21 @@ const RadioWidget: React.FC<{
               options.disabled ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >
-            <div className={`relative w-6 h-6 rounded-full transition-all duration-300 ${
+            <div className={`relative w-5 h-5 transition-all duration-200 ${
               options.disabled ? '' : 'group-hover:scale-105'
             }`}>
               <div className={`absolute inset-0 rounded-full border-2 transition-all duration-200 ${
                 isChecked 
-                  ? 'border-blue-500 bg-gradient-to-br from-blue-500/15 to-blue-500/5' 
-                  : 'border-slate-250 group-hover:border-blue-300 bg-slate-50'
+                  ? 'border-blue-500 bg-blue-500' 
+                  : 'border-slate-300 group-hover:border-blue-400 bg-white'
               }`} />
-              <div className={`absolute inset-1.5 rounded-full transition-all duration-300 ease-out ${
-                isChecked 
-                  ? 'scale-100 opacity-100 bg-gradient-to-br from-blue-500 to-blue-600 shadow-md shadow-blue-500/30' 
-                  : 'scale-0 opacity-0 bg-blue-500'
-              }`} />
+              {isChecked && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+              )}
             </div>
             <input
               type="radio"
@@ -227,7 +230,7 @@ const CheckboxWidget: React.FC<{
   };
   
   return (
-    <div className={`flex ${displayStyle === 'inline' ? 'flex-row flex-wrap gap-8' : 'flex-col gap-4'}`}>
+    <div className={`flex ${displayStyle === 'inline' ? 'flex-row flex-wrap gap-6' : 'flex-col gap-3'}`}>
       {optionItems.map((item: any, index: number) => {
         const itemValue = item[options.valueKey || 'value'];
         const isChecked = currentValue.includes(itemValue);
@@ -239,21 +242,21 @@ const CheckboxWidget: React.FC<{
               options.disabled ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >
-            <div className={`relative w-5.5 h-5.5 rounded-lg transition-all duration-300 ${
+            <div className={`relative w-5 h-5 transition-all duration-200 ${
               options.disabled ? '' : 'group-hover:scale-105'
             }`}>
-              <div className={`absolute inset-0 rounded-lg border-2 transition-all duration-200 ${
+              <div className={`absolute inset-0 rounded border-2 transition-all duration-200 ${
                 isChecked 
-                  ? 'border-blue-500 bg-gradient-to-br from-blue-500/15 to-blue-500/5' 
-                  : 'border-slate-250 group-hover:border-blue-300 bg-slate-50'
+                  ? 'border-blue-500 bg-blue-500' 
+                  : 'border-slate-300 group-hover:border-blue-400 bg-white'
               }`} />
-              <div className={`absolute inset-0 flex items-center justify-center transition-all duration-250 ${
-                isChecked ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-              }`}>
-                <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
+              {isChecked && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+              )}
             </div>
             <input
               type="checkbox"
@@ -394,10 +397,11 @@ const DateRangeWidget: React.FC<{
           onChange={(e) => handleStartChange(e.target.value)}
           disabled={options.disabled}
           placeholder={options.startPlaceholder || '开始日期'}
-          className="w-full px-4 py-3 bg-white/95 border border-slate-150 rounded-xl text-slate-700 text-sm
+          className="w-full px-4 py-3 pr-10 bg-white/95 border border-slate-150 rounded-xl text-slate-700 text-sm
             focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 
             disabled:bg-slate-50 disabled:text-slate-400 disabled:cursor-not-allowed disabled:border-slate-100
-            hover:border-slate-200 hover:bg-white transition-all duration-200"
+            hover:border-slate-200 hover:bg-white transition-all duration-200
+            [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:right-3 [&::-webkit-calendar-picker-indicator]:cursor-pointer"
         />
         <div className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -419,10 +423,11 @@ const DateRangeWidget: React.FC<{
           onChange={(e) => handleEndChange(e.target.value)}
           disabled={options.disabled}
           placeholder={options.endPlaceholder || '结束日期'}
-          className="w-full px-4 py-3 bg-white/95 border border-slate-150 rounded-xl text-slate-700 text-sm
+          className="w-full px-4 py-3 pr-10 bg-white/95 border border-slate-150 rounded-xl text-slate-700 text-sm
             focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 
             disabled:bg-slate-50 disabled:text-slate-400 disabled:cursor-not-allowed disabled:border-slate-100
-            hover:border-slate-200 hover:bg-white transition-all duration-200"
+            hover:border-slate-200 hover:bg-white transition-all duration-200
+            [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:right-3 [&::-webkit-calendar-picker-indicator]:cursor-pointer"
         />
         <div className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -466,7 +471,7 @@ const TimeRangeWidget: React.FC<{
           onChange={(e) => handleStartChange(e.target.value)}
           disabled={options.disabled}
           placeholder={options.startPlaceholder || '开始时间'}
-          className="w-full px-4 py-3 bg-white/95 border border-slate-150 rounded-xl text-slate-700 text-sm
+          className="w-full px-4 py-3 pr-10 bg-white/95 border border-slate-150 rounded-xl text-slate-700 text-sm
             focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 
             disabled:bg-slate-50 disabled:text-slate-400 disabled:cursor-not-allowed disabled:border-slate-100
             hover:border-slate-200 hover:bg-white transition-all duration-200"
@@ -491,7 +496,7 @@ const TimeRangeWidget: React.FC<{
           onChange={(e) => handleEndChange(e.target.value)}
           disabled={options.disabled}
           placeholder={options.endPlaceholder || '结束时间'}
-          className="w-full px-4 py-3 bg-white/95 border border-slate-150 rounded-xl text-slate-700 text-sm
+          className="w-full px-4 py-3 pr-10 bg-white/95 border border-slate-150 rounded-xl text-slate-700 text-sm
             focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 
             disabled:bg-slate-50 disabled:text-slate-400 disabled:cursor-not-allowed disabled:border-slate-100
             hover:border-slate-200 hover:bg-white transition-all duration-200"
